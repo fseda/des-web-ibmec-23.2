@@ -1,0 +1,1 @@
+tsc js/index.ts && npx webpack --config webpack.config.js && rm js/*.js

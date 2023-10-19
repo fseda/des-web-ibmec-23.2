@@ -10,7 +10,22 @@ export type Player = {
   altura: string;
 }
 
-export const player: Player[] = [
+
+export async function getPlayers(): Promise<Player[]> {
+  try {
+    const response = await fetch("https://botafogo-atletas.mange.li/all");
+    
+    if (!response.ok)
+    throw new Error(`HTTP error. Status ${response.status}`)
+  
+    return await response.json();
+  } catch (err) {
+    console.log("Fetch error: " + err);
+    return [];
+  }
+}
+
+export const players: Player[] = [
   {
     id: 1,
     elenco: "feminino",

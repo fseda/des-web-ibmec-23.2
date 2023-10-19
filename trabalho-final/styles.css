@@ -34,6 +34,7 @@ body {
   height: auto;
   max-height: 200px;
   object-fit: cover;
+  object-position: center top;
   border-bottom: 1px solid #ccc;
   flex-shrink: 0;
   transition: opacity 0.3s ease;
@@ -54,10 +55,10 @@ body {
   z-index: 5;
 }
 
-/* .player-card:hover .player-name {
+.player-card:hover .player-name {
   background-color: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.1);
-} */
+  color: rgba(0, 0, 0, 0.5);
+}
 
 .player-description {
   position: absolute;

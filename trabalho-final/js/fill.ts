@@ -1,19 +1,19 @@
-import { Player, player } from './data';
+import { Player } from './data';
 
-const fill = (athlete: Player) => {
+export const fill = (player: Player) => {
   const container = document.createElement('div');
   container.className = 'player-card';
 
   const title = document.createElement('h3');
-  title.innerText = athlete.nome;
+  title.innerText = player.nome;
   title.className = 'player-name';
 
   const image = document.createElement('img');
-  image.src = athlete.imagem;
+  image.src = player.imagem;
   image.className = 'player-image';
 
   const description = document.createElement('p');
-  description.innerText = athlete.descricao;
+  description.innerText = player.descricao;
   description.className = 'player-description';
 
   container.appendChild(title);
@@ -29,5 +29,3 @@ const fill = (athlete: Player) => {
 
   gridContainer.appendChild(container);
 }
-
-player.forEach(athlete => fill(athlete));
