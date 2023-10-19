@@ -32,3 +32,4 @@ playerTypeSelector.addEventListener('change', async (e) => {
 
   gridContainer.style.opacity = '1';
 });
+
