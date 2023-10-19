@@ -1,5 +1,5 @@
 import { bindHoverEvents } from "./events";
-import { fill } from "./fill";
+import { fill, setHeading } from "./utils";
 
 export type Player = {
   id: number;
@@ -14,9 +14,9 @@ export type Player = {
 }
 
 export type PlayerType = String;
-const men: PlayerType = "masculino";
-const women: PlayerType = "feminino";
-const all: PlayerType = "all";
+export const men: PlayerType = "masculino";
+export const women: PlayerType = "feminino";
+export const all: PlayerType = "all";
 
 export async function getPlayers(playerType: PlayerType): Promise<Player[]> {
   try {
@@ -39,13 +39,15 @@ export async function fetchPlayers(playerType: PlayerType): Promise<Response> {
 }
 
 export function loadData(players: Player[]) {
-  var gridContainer = document.querySelector('.grid-container') as HTMLElement;
+  const gridContainer = document.querySelector('.grid-container') as HTMLElement;
   gridContainer.innerHTML = '';
+
   players.forEach(player => fill(player));
 } 
 
 export async function loadInitialData() {
   const players = await getPlayers(all);
   loadData(players);
+  setHeading(all);
   bindHoverEvents();
 }

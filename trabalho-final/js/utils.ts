@@ -1,4 +1,4 @@
-import { Player } from './data';
+import { Player, PlayerType, all, men } from './data';
 
 export const fill = (player: Player) => {
   const container = document.createElement('div');
@@ -29,4 +29,10 @@ export const fill = (player: Player) => {
 
   gridContainer.appendChild(container);
   // document.body.replaceChild(gridContainer, document.querySelector('.grid-container') as HTMLDivElement);
+}
+
+export function setHeading(playerType: PlayerType) {
+  const select = document.getElementById('playertype-selector') as HTMLSelectElement;
+  const h1 = document.getElementById('playertype-heading') as HTMLHeadingElement;
+  h1.innerHTML = select.value === all ? 'Todos os jogadores' : select.value === men ? 'Jogadores do time masculino' : 'Jogadoras do time feminino';
 }

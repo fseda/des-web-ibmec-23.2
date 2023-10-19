@@ -1,4 +1,5 @@
 import { PlayerType, getPlayers, loadData } from "./data";
+import { setHeading } from "./utils";
 
 export const bindHoverEvents = () => {
   document.querySelectorAll('.player-card').forEach(card => {
@@ -14,12 +15,20 @@ export const bindHoverEvents = () => {
   });
 }
 
-document.getElementById('playertype-selector')?.addEventListener('change', async () => {
-  const playerType: PlayerType = (document.getElementById('playertype-selector') as HTMLSelectElement).value as PlayerType;
+const playerTypeSelector = document.getElementById('playertype-selector') as HTMLSelectElement;
+const gridContainer = document.querySelector('.grid-container') as HTMLElement;
+
+playerTypeSelector.addEventListener('change', async (e) => {
+  const playerType: PlayerType = playerTypeSelector.value as PlayerType;
+
+  gridContainer.style.opacity = '0';
   
+  await new Promise(resolve => setTimeout(resolve, 500));
   const players = await getPlayers(playerType);
-  console.log(players);
   
   loadData(players);
+  setHeading(playerType);
   bindHoverEvents();
+
+  gridContainer.style.opacity = '1';
 });
