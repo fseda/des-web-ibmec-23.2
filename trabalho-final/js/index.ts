@@ -1,13 +1,11 @@
-import { Player, players, getPlayers } from './data';
+import { Player, PlayerType, getPlayers, loadInitialData } from './data';
 import { fill } from './fill';
-import { bindHoverEvents } from './style';
+import { bindHoverEvents } from './events';
 
-getPlayers().then((players: Player[]) => {
-  players.forEach((player: Player) => fill(player));
+loadInitialData().then(() => {
   bindHoverEvents();
-}).catch((error: Error) => {
-  console.error(error);
+  console.log('Initial data loaded');
+  
+}).catch(e => {
+  console.error(e);
 });
-
-
-// players.forEach((player: Player) => fill(player));

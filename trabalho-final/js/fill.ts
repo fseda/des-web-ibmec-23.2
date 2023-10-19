@@ -20,7 +20,7 @@ export const fill = (player: Player) => {
   container.appendChild(image);
   container.appendChild(description);
 
-  let gridContainer = document.querySelector('.grid-container');
+  var gridContainer = document.querySelector('.grid-container');
   if (!gridContainer) {
     gridContainer = document.createElement('div');
     gridContainer.className = 'grid-container';
@@ -28,4 +28,5 @@ export const fill = (player: Player) => {
   }
 
   gridContainer.appendChild(container);
+  // document.body.replaceChild(gridContainer, document.querySelector('.grid-container') as HTMLDivElement);
 }
